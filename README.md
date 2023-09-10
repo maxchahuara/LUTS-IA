@@ -160,7 +160,7 @@ Para todas las versiones de PC, sigue estos pasos generales:
 
 1. Descarga la carpeta correspondiente y colócala en tu PC 📂.
 2. Usando Visual Studio Code, abre la carpeta.
-3. En cada carpeta, encontrarás un archivo llamado .env. 📄. Ábrelo y modifica el texto (COLOCA-AQUI-TU-API-KEY-DE-OPEN-AI) con tu API Key de OpenAI. 🔑
+3. En cada carpeta, debes crear un archivo llamado `.env` y copiar el contenido del archivo env.txt dentro de ese archivo📄. Modifica el texto (COLOCA-AQUI-TU-API-KEY-DE-OPEN-AI) con tu API Key de OpenAI. 🔑
 4. Luego, solo tienes que abrir el archivo app.py 📜.
 5. ¡Ejecuta el archivo! Puedes hacerlo presionando F5 o usando el comando de ejecución de Visual Studio Code 🚀.
 6. Una vez que lo hagas, abre un navegador e ingresa a **http://127.0.0.1:5000** 🌍.
