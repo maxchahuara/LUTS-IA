@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Virtual Malhablado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div id="chat-box" class="border p-3 mb-3" style="height: 400px; overflow-y: scroll;"></div>
+            <textarea id="user-input" class="form-control mb-3" placeholder="Escribe un mensaje..."></textarea>
+            <button id="send-btn" class="btn btn-primary">Enviar</button>
+        </div>
+    </div>
+</div>
+<script>
+    // Lista para almacenar todos los mensajes
+    let messages = [
+        {"role": "system", "content": "Te llamas LUTS-IA, y eres un asistente virtual"}
+    ];
+
+    $("#send-btn").click(function() {
+        let userMessage = $("#user-input").val();
+        $("#chat-box").append('<p><strong>Tú:</strong> ' + userMessage + '</p>');
+        
+        // Añadir el mensaje del usuario a la lista
+        messages.push({"role": "user", "content": userMessage});
+        
+        $.ajax({
+            url: "/api/chat",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({messages: messages}),
+            success: function(data) {
+                let assistantMessage = data.response;
+                $("#chat-box").append('<p><strong>LUTS-IA:</strong> ' + assistantMessage + '</p>');
+                
+                // Añadir el mensaje del asistente a la lista
+                messages.push({"role": "assistant", "content": assistantMessage});
+            }
+        });
+
+        // Limpiar el área de entrada
+        $("#user-input").val("");
+    });
+</script>
+</body>
+</html>

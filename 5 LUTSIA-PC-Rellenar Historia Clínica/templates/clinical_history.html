@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia Clínica Electrónica</title>
+    
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 40px;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 20px 40px;
+        margin: auto;
+        max-width: 600px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        color: #333;
+    }
+
+    .section {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    input[type="text"]:focus, select:focus {
+        border-color: #007BFF;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+</style>
+<!-- Add any additional styles or scripts here -->
+</head>
+<body>
+    <div class="container">
+        <h1>Historia Clínica Electrónica</h1>
+        <div class="section">
+            <h2>Información del paciente</h2>
+            <form id="patient-form">
+                <label for="fullname">Nombre completo:</label>
+                <input type="text" id="fullname" value="{{ info.get('fullname', '') }}" required>
+
+                <label for="birthdate">Fecha de nacimiento:</label>
+                <input type="text" id="birthdate" value="{{ info.get('birthdate', '') }}" required>
+
+                <label for="gender">Género:</label>
+                <select id="gender">
+                    <option value="masculino" {% if info.get('gender') == 'masculino' %}selected{% endif %}>Masculino</option>
+                    <option value="femenino" {% if info.get('gender') == 'femenino' %}selected{% endif %}>Femenino</option>
+                    <option value="otro" {% if info.get('gender') == 'otro' %}selected{% endif %}>Otro</option>
+                </select>
+
+                <label for="additional_notes">Notas adicionales:</label>
+                <input type="text" id="additional_notes" value="{{ info.get('additional_notes', '') }}">
+                
+                <label for="current_illness">Enfermedad actual:</label>
+                <input type="text" id="current_illness" value="{{ info.get('current_illness', '') }}">
+                
+                <label for="consultation_reason">Motivo de consulta:</label>
+                <input type="text" id="consultation_reason" value="{{ info.get('consultation_reason', '') }}">
+                
+                <label for="surgical_history">Historia quirúrgica:</label>
+                <input type="text" id="surgical_history" value="{{ info.get('surgical_history', '') }}">
+                
+                <label for="current_meds">Medicamentos actuales:</label>
+                <input type="text" id="current_meds" value="{{ info.get('current_meds', '') }}">
+                
+                <label for="allergies">Alergias:</label>
+                <input type="text" id="allergies" value="{{ info.get('allergies', '') }}">
+                
+                <label for="medical_history">Antecedentes médicos:</label>
+                <input type="text" id="medical_history" value="{{ info.get('medical_history', '') }}">
+                
+                <label for="profession">Profesión:</label>
+                <input type="text" id="profession" value="{{ info.get('profession', '') }}">
+                
+                <label for="email">Correo electrónico:</label>
+                <input type="text" id="email" value="{{ info.get('email', '') }}">
+                
+                <label for="phone">Teléfono:</label>
+                <input type="text" id="phone" value="{{ info.get('phone', '') }}">
+                
+                <label for="address">Dirección:</label>
+                <input type="text" id="address" value="{{ info.get('address', '') }}">
+                </form>
+        </div>
+        <!-- ... rest of the form ... -->
+    </div>
+</body>
+</html>
