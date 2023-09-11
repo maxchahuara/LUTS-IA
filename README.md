@@ -10,14 +10,9 @@ La guía que tienes en tus manos es tu brújula 🧭 en esta emocionante aventur
 
 Entonces, si estás listo para embarcarte en un viaje de descubrimiento hacia las profundidades de la interacción digital, ¡continúa leyendo! 🚀🌌
 
+### Mira el evento demostrativo de esta propuesta tecnológica
 
-
-Te damos la bienvenida a **LUTS-IA** 🌐, tu puerta de entrada al mundo de ChatGPT y la interactividad. ¿Te has imaginado charlar con dispositivos como Alexa o aplicaciones en tu computadora? 💬🖥️ ¡Estás en el sitio perfecto! 📍
-
-Esta guía es como tu brújula 🧭 en esta aventura. No te preocupes si no eres un experto en tecnología 🤷; hemos diseñado cada parte pensando en ti. Todo está explicado de forma sencilla y paso a paso 🚶‍♂️.
-
-Así que, ¡empecemos! 🚀 Estás a punto de embarcarte en un viaje fascinante hacia el núcleo de la interacción digital 🌌. ¡Vamos allá! 🎉
-
+[![Everything Is AWESOME](https://img.youtube.com/vi/dh-bur-ty5c/0.jpg)](https://www.youtube.com/watch?v=dh-bur-ty5c "Evento Demostrativo")
 ---
 
 ## Capítulo 1: Conexión con OpenAI
