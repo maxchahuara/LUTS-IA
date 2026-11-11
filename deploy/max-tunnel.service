@@ -1,11 +1,13 @@
 [Unit]
-Description=MAX temporary HTTPS voice tunnel (development only)
+Description=MAX stable HTTPS voice tunnel
 After=max-edge.service
 Wants=max-edge.service
+StartLimitIntervalSec=0
 
 [Service]
-ExecStart=%h/.local/bin/cloudflared tunnel --config %h/.config/max/cloudflared.yml --no-autoupdate --url http://127.0.0.1:8788 --logfile %h/.local/share/max/tunnel.log
-Restart=on-failure
+ExecStart=%h/.local/bin/cloudflared tunnel --config %h/.config/max/cloudflared.yml --no-autoupdate --logfile %h/.local/share/max/tunnel.log run
+UnsetEnvironment=TUNNEL_TOKEN TUNNEL_TOKEN_FILE TUNNEL_CRED_FILE TUNNEL_ORIGIN_CERT
+Restart=always
 RestartSec=5
 UMask=0077
 NoNewPrivileges=true

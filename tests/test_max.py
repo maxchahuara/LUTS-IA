@@ -371,3 +371,39 @@ async def test_second_runtime_cannot_interrupt_active_jobs(cfg):
     assert first.store.get(job["id"], "u")["status"] == "running"
     await first.close()
     await second.close()
+
+
+async def test_public_health_reports_runtime_state_without_private_data():
+    from max_runtime.edge import app
+    def backend(req):
+        assert req.url.path == "/health" and req.method == "GET"
+        return httpx.Response(200, json={"service": "MAX", "status": "ok", "version": "0.1.1",
+                                       "api_token": "must-stay-private", "household": "private"})
+    async with app.router.lifespan_context(app):
+        await app.state.client.aclose()
+        app.state.client = httpx.AsyncClient(base_url="http://127.0.0.1:8787",
+                                            transport=httpx.MockTransport(backend))
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://edge") as client:
+            r = await client.get("/", follow_redirects=True)
+            assert r.status_code == 200
+            assert r.json() == {"service": "MAX", "status": "ok", "version": "0.1.1"}
+            assert (await client.get("/v1/status")).status_code == 404
+
+
+@pytest.mark.parametrize("failure", ["offline", "bad_status", "invalid_json"])
+async def test_public_health_is_unavailable_until_runtime_is_ready(failure):
+    from max_runtime.edge import app
+    def backend(req):
+        if failure == "offline":
+            raise httpx.ConnectError("private connection detail", request=req)
+        if failure == "bad_status":
+            return httpx.Response(503, text="private startup detail")
+        return httpx.Response(200, text="private invalid response")
+    async with app.router.lifespan_context(app):
+        await app.state.client.aclose()
+        app.state.client = httpx.AsyncClient(base_url="http://127.0.0.1:8787",
+                                            transport=httpx.MockTransport(backend))
+        async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://edge") as client:
+            r = await client.get("/health")
+            assert r.status_code == 503
+            assert r.json() == {"service": "MAX", "status": "starting"}

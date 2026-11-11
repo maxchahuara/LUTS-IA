@@ -20,6 +20,7 @@ class Settings(BaseModel):
     model_config = ConfigDict(extra="forbid")
     state_dir: Path = Path.home() / ".local/share/max"
     household: str = "home"
+    public_url: str = ""
     api_token: str = Field(min_length=32, repr=False)
     identity_salt: str = Field(min_length=32, repr=False)
     bridge_token: str = Field(default="", repr=False)

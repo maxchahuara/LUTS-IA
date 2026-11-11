@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lutsia-max"
-version = "0.1.0"
+version = "0.1.1"
 description = "MAX: Alexa, Codex con ChatGPT y herramientas domésticas verificadas"
 requires-python = ">=3.12"
 license = "MIT"

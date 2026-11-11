@@ -2,11 +2,13 @@
 Description=MAX restricted voice ingress
 After=max.service
 Wants=max.service
+StartLimitIntervalSec=0
 
 [Service]
 WorkingDirectory=%h/projects/LUTS-IA
 ExecStart=%h/.local/share/max/venv/bin/uvicorn max_runtime.edge:app --host 127.0.0.1 --port 8788 --no-access-log
-Restart=on-failure
+Restart=always
+RestartSec=3
 UMask=0077
 NoNewPrivileges=true
 PrivateTmp=true

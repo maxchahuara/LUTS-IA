@@ -1,5 +1,6 @@
 {
   "household": "home",
+  "public_url": "https://max.example.com",
   "api_token": "REPLACE_WITH_AT_LEAST_32_RANDOM_CHARACTERS",
   "identity_salt": "REPLACE_WITH_AT_LEAST_32_RANDOM_CHARACTERS",
   "bridge_token": "REPLACE_WITH_A_DIFFERENT_RANDOM_SECRET",

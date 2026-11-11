@@ -1,0 +1,7 @@
+# Copia privada en ~/.config/max/cloudflared.yml. No publiques las credenciales.
+tunnel: REPLACE_WITH_NAMED_TUNNEL_UUID
+credentials-file: /home/USER/.config/max/tunnel-credentials.json
+ingress:
+  - hostname: max.example.com
+    service: http://127.0.0.1:8788
+  - service: http_status:404

@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 
 import httpx
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import Response
+from fastapi.responses import JSONResponse, RedirectResponse, Response
 
 
 @asynccontextmanager
@@ -17,6 +17,24 @@ async def lifespan(app):
 
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None, lifespan=lifespan)
+
+
+@app.get("/")
+async def index():
+    return RedirectResponse("/health")
+
+
+@app.get("/health")
+async def health():
+    try:
+        result = await app.state.client.get("/health", timeout=2)
+        result.raise_for_status()
+        data = result.json()
+        if not isinstance(data, dict) or data.get("service") != "MAX" or data.get("status") != "ok":
+            raise ValueError("Runtime not ready")
+        return {"service": "MAX", "status": "ok", "version": data.get("version")}
+    except (httpx.HTTPError, ValueError):
+        return JSONResponse({"service": "MAX", "status": "starting"}, status_code=503)
 
 
 @app.post("/alexa")

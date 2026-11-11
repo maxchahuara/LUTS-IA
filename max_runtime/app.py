@@ -49,6 +49,7 @@ def create_app(settings=None, runtime=None):
     @app.get("/v1/status")
     def status(principal=Depends(owner)):
         return {"service": "MAX", "version": __version__,
+                "public_url": cfg.public_url,
                 "home_assistant": "linked" if rt.home.configured else "setup_required",
                 "authorized_entities": list(cfg.entities),
                 "alexa": "configured" if cfg.alexa_skill_id and cfg.alexa_users else "setup_required",

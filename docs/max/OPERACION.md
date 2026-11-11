@@ -28,12 +28,13 @@ claves distintas. El endpoint HTTPS directo verifica firma y timestamp con el SD
 oficial de Amazon; ambos transportes comprueban además el Skill ID, usuario y
 dispositivo. El receptor permanece cerrado hasta configurar los usuarios Alexa.
 
-La entrada opcional `max-edge.service` escucha en loopback 8788 y publica solo
-las rutas de voz. `max-tunnel.service` permite pruebas HTTPS mediante un Quick
-Tunnel de Cloudflare, con configuración propia para no heredar túneles ajenos.
-La URL de un Quick Tunnel cambia cuando ese proceso se reinicia; para uso diario
-se requiere sustituirlo por un túnel con nombre y hostname estable. La API de
-administración no se publica a través de esa entrada.
+La entrada opcional `max-edge.service` escucha en loopback 8788 y publica las
+rutas de voz y `/health`. Esta última devuelve solo servicio, versión y estado;
+responde 503 si el runtime todavía no está disponible. `max-tunnel.service` usa
+un túnel con nombre de Cloudflare, credenciales propias y un hostname HTTPS
+estable. La API de administración permanece local. La
+[guía de HTTPS y arranque](HTTPS-Y-ARRANQUE.md) describe su configuración y
+verificación después de reiniciar Linux, sin iniciar sesión en el escritorio.
 
 Cada petición tiene un ID único. Las repeticiones recuperan el mismo trabajo. Los
 trabajos de una conversación se procesan en orden, y los resultados de voz se

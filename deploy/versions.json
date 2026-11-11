@@ -1,6 +1,7 @@
 {
   "validated_on": "2026-11-11",
   "platform": "linux-x86_64",
+  "max": "0.1.1",
   "python": "3.12",
   "pip": "26.3",
   "openclaw": "2026.10.5",

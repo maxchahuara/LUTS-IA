@@ -1,15 +1,17 @@
 [Unit]
 Description=MAX Alexa and Codex runtime
-After=network-online.target openclaw-gateway.service
-Wants=network-online.target
+After=openclaw-gateway.service
+Wants=openclaw-gateway.service
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
 WorkingDirectory=%h/projects/LUTS-IA
 Environment=PATH=%h/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
 Environment=MAX_CONFIG=%h/.config/max/config.json
+ExecStartPre=%h/.local/share/max/venv/bin/python -m max_runtime.readiness
 ExecStart=%h/.local/share/max/venv/bin/uvicorn max_runtime.app:create_app --factory --host 127.0.0.1 --port 8787 --no-access-log
-Restart=on-failure
+Restart=always
 RestartSec=3
 UMask=0077
 NoNewPrivileges=true
@@ -19,6 +21,7 @@ ProtectHome=read-only
 ReadWritePaths=%h/.local/share/max %h/.config/max %h/.openclaw
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 TimeoutStopSec=15
+TimeoutStartSec=200
 
 [Install]
 WantedBy=default.target
