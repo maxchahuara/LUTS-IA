@@ -1,0 +1,18 @@
+{
+  "household": "home",
+  "api_token": "REPLACE_WITH_AT_LEAST_32_RANDOM_CHARACTERS",
+  "identity_salt": "REPLACE_WITH_AT_LEAST_32_RANDOM_CHARACTERS",
+  "bridge_token": "REPLACE_WITH_A_DIFFERENT_RANDOM_SECRET",
+  "alexa_skill_id": "",
+  "alexa_users": [],
+  "ha_url": "http://127.0.0.1:8123",
+  "ha_authorize_url": "http://homeassistant.local:8123",
+  "ha_client_id": "http://localhost:8787/",
+  "entities": {
+    "living_room_tv": {
+      "entity_id": "media_player.living_room_tv",
+      "aliases": ["la tv de la sala", "tv de la sala", "el televisor de la sala"],
+      "actions": ["turn_on", "turn_off", "volume_set", "media_play", "media_pause", "select_source"]
+    }
+  }
+}

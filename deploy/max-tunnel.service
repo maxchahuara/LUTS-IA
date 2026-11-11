@@ -1,0 +1,19 @@
+[Unit]
+Description=MAX temporary HTTPS voice tunnel (development only)
+After=max-edge.service
+Wants=max-edge.service
+
+[Service]
+ExecStart=%h/.local/bin/cloudflared tunnel --config %h/.config/max/cloudflared.yml --no-autoupdate --url http://127.0.0.1:8788 --logfile %h/.local/share/max/tunnel.log
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/share/max
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=default.target

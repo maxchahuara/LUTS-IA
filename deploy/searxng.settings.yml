@@ -1,0 +1,14 @@
+use_default_settings: true
+server:
+  secret_key: REPLACE_WITH_A_RANDOM_SECRET
+  bind_address: "0.0.0.0"
+  port: 8080
+  limiter: false
+  image_proxy: false
+search:
+  formats: [html, json]
+  safe_search: 1
+  default_lang: es
+outgoing:
+  request_timeout: 5.0
+  max_request_timeout: 10.0
