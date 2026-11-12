@@ -1,0 +1,13 @@
+services:
+  searxng:
+    image: ${SEARXNG_IMAGE:?Set a verified image digest in the private deployment environment}
+    container_name: max-searxng
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8888:8080"
+    volumes:
+      - ${MAX_SEARXNG_CONFIG:?Set the private config directory}:/etc/searxng:rw
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      SEARXNG_BASE_URL: http://localhost:8888/

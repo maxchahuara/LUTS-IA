@@ -1,0 +1,9 @@
+{
+  "name": "max-alexa",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-12",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "vars": { "REGISTER_TOKEN_SHA256": "REPLACE_WITH_SHA256_OF_PRIVATE_REGISTER_TOKEN" },
+  "kv_namespaces": [{ "binding": "MAX_RELAY", "id": "REPLACE_WITH_PRIVATE_NAMESPACE_ID" }]
+}

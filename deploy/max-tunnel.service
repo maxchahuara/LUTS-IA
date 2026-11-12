@@ -1,0 +1,21 @@
+[Unit]
+Description=MAX stable HTTPS voice tunnel
+After=max-edge.service
+Wants=max-edge.service
+StartLimitIntervalSec=0
+
+[Service]
+ExecStart=%h/.local/bin/cloudflared tunnel --config %h/.config/max/cloudflared.yml --no-autoupdate --logfile %h/.local/share/max/tunnel.log run
+UnsetEnvironment=TUNNEL_TOKEN TUNNEL_TOKEN_FILE TUNNEL_CRED_FILE TUNNEL_ORIGIN_CERT
+Restart=always
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/share/max
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=default.target

@@ -1,5 +1,14 @@
 # Guía LUTS-IA 📘
 
+> **MAX (2026):** la evolución de Alexa con Codex y sesión ChatGPT se encuentra
+> en [la guía de instalación y operación](docs/max/OPERACION.md). El runtime nuevo
+> usa una laptop Linux, Home Assistant, SearXNG y trabajos persistentes. La guía
+> de [HTTPS fijo sin dominio propio](docs/max/WORKERS-HTTPS.md) explica el arranque
+> automático; las [pruebas de MAX 0.1.2](docs/max/VALIDACION-2026-11-12.md) registran
+> el alcance verificado. La guía
+> histórica que sigue describe las variantes originales; su configuración con
+> API key y GPT-3.5 no corresponde al nuevo modo MAX.
+
 ---
 
 ## Introducción

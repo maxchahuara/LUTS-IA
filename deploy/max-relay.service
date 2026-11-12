@@ -1,0 +1,23 @@
+[Unit]
+Description=MAX stable Workers HTTPS relay and outbound connector
+After=max-edge.service
+Wants=max-edge.service
+StartLimitIntervalSec=0
+
+[Service]
+WorkingDirectory=%h/projects/LUTS-IA
+ExecStart=%h/.local/share/max/venv/bin/python -m max_runtime.relay
+UnsetEnvironment=TUNNEL_TOKEN TUNNEL_TOKEN_FILE TUNNEL_CRED_FILE TUNNEL_ORIGIN_CERT
+Restart=always
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.local/share/max
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target
