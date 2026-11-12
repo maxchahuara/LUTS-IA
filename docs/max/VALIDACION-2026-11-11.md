@@ -1,5 +1,8 @@
 # Validación de MAX 0.1.0 y 0.1.1
 
+Este registro conserva el estado histórico del 11 de noviembre. Los pendientes
+de HTTPS de 0.1.1 se actualizan en la [validación de MAX 0.1.2](VALIDACION-2026-11-12.md).
+
 Fecha: 11 de noviembre de 2026. Repositorio original: `maxchahuara/LUTS-IA`.
 La implementación se instala y versiona en Linux, conservando la historia Git.
 

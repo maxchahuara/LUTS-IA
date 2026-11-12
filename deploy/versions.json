@@ -1,8 +1,10 @@
 {
-  "validated_on": "2026-11-11",
+  "validated_on": "2026-11-12",
   "platform": "linux-x86_64",
-  "max": "0.1.1",
+  "max": "0.1.2",
+  "worker_compatibility_date": "2026-11-12",
   "python": "3.12",
+  "node": "24.16.0",
   "pip": "26.3",
   "openclaw": "2026.10.5",
   "codex_plugin": "2026.10.5",

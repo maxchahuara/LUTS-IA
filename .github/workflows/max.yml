@@ -16,8 +16,12 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
       - run: pip install pip==26.3
       - run: pip install -r requirements.lock
       - run: pip install --no-deps -e .
       - run: ruff check max_runtime tests deploy "1 LUTSIA-ALEXA/lambda/lambda_function.py"
       - run: pytest -q
+      - run: node --test tests/worker.test.mjs

@@ -1,6 +1,12 @@
 # HTTPS estable y arranque de MAX
 
-MAX 0.1.1 utiliza un túnel con nombre y un registro DNS permanente. La URL no
+Desde MAX 0.1.2 hay dos opciones de entrada estable. Si no tienes un dominio
+administrado en Cloudflare, utiliza [Workers HTTPS](WORKERS-HTTPS.md): una URL
+`workers.dev` fija con registro autenticado del conector al arrancar Linux.
+La guía de esta página describe la alternativa de túnel con nombre y dominio.
+Elige una de las dos; no es necesario mantener ambos conectores ejecutándose.
+
+La alternativa con dominio utiliza un túnel con nombre y un registro DNS permanente. La URL no
 depende de la IP de la laptop ni cambia al reiniciar el proceso. Requiere un
 dominio administrado en Cloudflare, conectividad a Internet y la laptop encendida.
 Los ejemplos usan `max.example.com`; sustituye el hostname en la configuración

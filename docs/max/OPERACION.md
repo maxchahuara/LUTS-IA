@@ -30,9 +30,11 @@ dispositivo. El receptor permanece cerrado hasta configurar los usuarios Alexa.
 
 La entrada opcional `max-edge.service` escucha en loopback 8788 y publica las
 rutas de voz y `/health`. Esta última devuelve solo servicio, versión y estado;
-responde 503 si el runtime todavía no está disponible. `max-tunnel.service` usa
-un túnel con nombre de Cloudflare, credenciales propias y un hostname HTTPS
-estable. La API de administración permanece local. La
+responde 503 si el runtime todavía no está disponible. Para una URL estable sin
+dominio propio, `max-relay.service` mantiene un conector saliente y registra su
+destino en un Worker `workers.dev` mediante una identidad privada. Alexa conserva
+el mismo endpoint al reiniciar Linux. La alternativa `max-tunnel.service` usa un
+túnel con nombre y un dominio administrado en Cloudflare. La API de administración permanece local. La
 [guía de HTTPS y arranque](HTTPS-Y-ARRANQUE.md) describe su configuración y
 verificación después de reiniciar Linux, sin iniciar sesión en el escritorio.
 
